@@ -39,7 +39,7 @@ public class GPSTracker extends Service implements LocationListener {
         try {
 
             locationManager = (LocationManager) context.getSystemService(LOCATION_SERVICE);
-            isGPSEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+            isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
             isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
             if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
@@ -50,6 +50,7 @@ public class GPSTracker extends Service implements LocationListener {
                         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, 10, this);
                         if (locationManager!=null){
                             location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                            stopUsingGPS();
                         }
                     }
                 }
@@ -58,9 +59,11 @@ public class GPSTracker extends Service implements LocationListener {
                 if (location==null){
                     if (isNetworkEnabled){
                         if (location==null){
+
                             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 10000, 10, this);
                             if (locationManager!=null){
                                 location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                                stopUsingGPS();
                             }
                         }
                     }
@@ -72,6 +75,14 @@ public class GPSTracker extends Service implements LocationListener {
         }
         return location;
     }
+
+    //Método que remueve el gps en el momento que obtenemos la localización
+    private void stopUsingGPS() {
+        if (locationManager != null) {
+            locationManager.removeUpdates(this);
+        }
+    }
+
 
     @Nullable
     @Override
