@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">AdoptaDog</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="description_main">El problema de la sobrepoblación canina y felina es abrumador. De acuerdo con el INEGI,
+        en México existen alrededor de 23 millones de perros y gatos, de los cuales sólo 30% tiene un hogar.
+        Casi en cualquier parte del país hay perros y gatos abandonados o maltratados. Muchos de ellos están en la calle,
+        aunque los que tienen casa tampoco se salvan del maltrato.
+        La solución propuesta por el gobierno –los Centros de Control Canino donde los animales son exterminados– no ha dado resultados,
+        además de ser totalmente irrespetuosa de la vida animal. </string>
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps">Map</string>
+</resources>
